@@ -1,0 +1,87 @@
+﻿@model PruebaTalycapGlobalAPI.LogisticaMaritima
+@{
+    ViewData["Title"] = "Lista de registros";
+}
+
+
+
+<h1 class="text-center">Aplicación NET 6 MVC</h1>
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card border">
+            <div class="card-header">
+                <h3 class="text-center">Editar Logistica Maritima</h3>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Home" asp-action="EditarLogisticaMaritima" method="post">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <!-- Enviar el id del usuario como campo oculto-->
+                    <input type="hidden" asp-for="NumeroGuia" />
+
+
+                    <div class="form-group">
+                        <label asp-for="IdCliente" class="control-label"></label>
+                        <input asp-for="IdCliente" class="form-control" />
+                        <span asp-validation-for="IdCliente" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TipoProducto" class="control-label"></label>
+                        <input asp-for="TipoProducto" class="form-control" />
+                        <span asp-validation-for="TipoProducto" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="CantidadProducto" class="control-label"></label>
+                        <input asp-for="CantidadProducto" class="form-control" />
+                        <span asp-validation-for="CantidadProducto" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="FechaRegistro" class="control-label"></label>
+                        <input asp-for="FechaRegistro" class="form-control" />
+                        <span asp-validation-for="FechaRegistro" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="FechaEntrega" class="control-label"></label>
+                        <input asp-for="FechaEntrega" class="form-control" />
+                        <span asp-validation-for="FechaEntrega" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PrecioEnvio" class="control-label"></label>
+                        <input asp-for="PrecioEnvio" class="form-control" />
+                        <span asp-validation-for="PrecioEnvio" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="NumeroFlota" class="control-label"></label>
+                        <input asp-for="NumeroFlota" class="form-control" />
+                        <span asp-validation-for="NumeroFlota" class="text-danger"></span>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Editar Logistica Maritima</button>
+                    </div>
+
+
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>

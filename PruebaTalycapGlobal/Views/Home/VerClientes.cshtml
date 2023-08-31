@@ -1,0 +1,110 @@
+﻿@model IEnumerable<PruebaTalycapGlobalAPI.Clientes>
+@{
+    ViewData["Title"] = "Lista de registros";
+}
+
+<h1 class="text-center">Aplicación NET 6 MVC</h1>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Mensaje"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="float-right">
+            <a asp-action="CreateCliente" asp-controller="Home" class="btn btn-success">Crear Clientes</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card border">
+            <div class="card-header">
+                <h3 class="text-center"> Lista de Clientes</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    @if (Model.Count() > 0)
+                    {
+                        <table class="table table-bordered" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(m => m.IdCliente)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Nombres)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Apellidos)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Celular)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Correo)</th>
+
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => item.IdCliente)</td>
+                                        <td>@Html.DisplayFor(m => item.Nombres)</td>
+                                        <td>@Html.DisplayFor(m => item.Apellidos)</td>
+                                        <td>@Html.DisplayFor(m => item.Celular)</td>
+                                        <td>@Html.DisplayFor(m => item.Correo)</td>
+
+                                        <td>
+                                            <a class="btn btn-primary" asp-action="PutClientes" asp-route-id="@item.IdCliente">Editar</a>
+                                            <a class="btn btn-danger" id="btnDeleteUser" onclick="Eliminar(@item.IdCliente)">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p> No hay registros.</p>
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
+
+@section scripts{
+    <script>
+
+        function Eliminar(IdCliente){
+            //var UsuID = $('#btnDeleteUser').val()
+            var msg = ""
+            $.ajax({
+            type: "DELETE",
+            url: "@Url.Action("BorrarClientes")" + "?IdCliente=" + IdCliente,
+            //data: {UsuID: UsuID},
+            dataType: "text",
+            success: function (msg) {
+                console.log(msg);
+                location.reload();
+            },
+            error: function (req, status, error) {
+                console.log(msg);
+            }
+        });
+
+        }
+
+
+
+    </script>
+}
+
+
+
+

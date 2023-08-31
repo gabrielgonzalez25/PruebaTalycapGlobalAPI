@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PruebaTalycapGlobalAPI.Clientes>
+@{
+    ViewData["Title"] = "Lista de registros";
+}
+
+<h1 class="text-center">Aplicación NET 6 MVC</h1>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Mensaje"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="float-right">
+            <a asp-action="VerClientes" asp-controller="Home" class="btn btn-success">Clientes</a>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="float-right">
+            <a asp-action="VerLogisticaMaritima" asp-controller="Home" class="btn btn-success">Logistica Maritima</a>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="float-right">
+            <a asp-action="VerLogisticaTerrestre" asp-controller="Home" class="btn btn-success">Logistica Terrestre</a>
+        </div>
+    </div>
+</div>
+
+
+
+
